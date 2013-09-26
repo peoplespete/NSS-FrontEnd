@@ -1,4 +1,4 @@
-var rooms = []
+var rooms = [];
 var addingrooms = true;
 var ans;
 var priceperwindow = 250;
