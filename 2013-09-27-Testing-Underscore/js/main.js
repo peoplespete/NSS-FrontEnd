@@ -35,3 +35,19 @@ function filter_a_strings(stringsac)
     return strng[0].toLowerCase()=='a';
   });
 }
+
+function findEnding(stringsac,letter){
+  return _.find(stringsac,function(word){
+    // alert("End of " + word + " is " + word[word.length-1]);
+    return word[word.length-1] == letter;
+  });
+}
+function sortnums(numlist)
+{
+  return _.sortBy(numlist, function(num){return -num;}) //negative in from of sum reverses the order
+}
+
+// var nummers = [1,6,3,7,8,5,3];
+// alert(nummers);
+// alert(sortnums(nummers));
+// alert(_.shuffle(nummers));

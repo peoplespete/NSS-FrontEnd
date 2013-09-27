@@ -37,3 +37,9 @@ test("Find A String", function(){
   deepEqual(find_a_string(string_list,'friend'),"friend","Found the friend string successfully!");
   deepEqual(find_a_string(string_list,'happymeal'),undefined,"Should not find the string");
 });
+
+test("Find first string ending in particular letter", function(){
+  var string_list = ['apple','jelly','reds','blues','purple'];
+  deepEqual(findEnding(string_list,'s'),'reds',"Ending in S");
+  deepEqual(findEnding(string_list,'o'),undefined,"Making sure none end in O");
+});
