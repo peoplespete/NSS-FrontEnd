@@ -7,3 +7,30 @@ test( "Filter Even Numbers", function() {
   deepEqual( filterEvens(numbers), expected, "Filtered Evens Successfully!" );
 
 });
+
+
+test("Filter Long Strings (>3 chars)", function(){
+  var string_list = ['hey','bro','how','you','is','friend'];
+  var expected = ['friend'];
+  deepEqual(filter_long_strings(string_list),expected,"Filtered Long Strings Successfully!");
+});
+
+
+test("Filter Medium Strings (>2 but <5 chars)", function(){
+  var string_list = ['as','hey','bro','how','you','ream','is','friend'];
+  var expected = ['hey','bro','how','you','ream'];
+  deepEqual(filter_medium_strings(string_list),expected,"Filtered Medium Strings Successfully!");
+});
+
+test("Filter A Strings", function(){
+  var string_list = ['as','ahoy','bro','Alex','you','ream','is','friend'];
+  var expected = ['as','ahoy','Alex'];
+  deepEqual(filter_a_strings(string_list),expected,"Filtered A Strings Successfully!");
+});
+
+
+test("Find A String", function(){
+  var string_list = ['as','ahoy','bro','Alex','you','ream','is','friend'];
+  var expected = 'Alex';
+  deepEqual(find_a_string(string_list,'Alex'),expected,"Found the string successfully!");
+});

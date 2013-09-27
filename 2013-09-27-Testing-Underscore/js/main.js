@@ -8,3 +8,30 @@ function filterEvens(numbers)
   });
 }
 
+function filter_long_strings(stringsac)
+{
+  return _.filter(stringsac,function(strng){
+    return strng.length>3;
+  });
+}
+
+function filter_medium_strings(stringsac)
+{
+  return _.filter(stringsac,function(strng){
+    return strng.length>2 && strng.length<5;
+  });
+}
+
+function find_a_string(list, target){
+  return _.find(list, function(item){
+    return item == target;
+  });
+}
+
+
+function filter_a_strings(stringsac)
+{
+  return _.filter(stringsac,function(strng){
+    return strng[0].toLowerCase()=='a';
+  });
+}
