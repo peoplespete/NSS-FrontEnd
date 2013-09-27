@@ -22,8 +22,8 @@ function filter_medium_strings(stringsac)
   });
 }
 
-function find_a_string(list, target){
-  return _.find(list, function(item){
+function find_a_string(word_list, target){
+  return _.find(word_list, function(item){
     return item == target;
   });
 }

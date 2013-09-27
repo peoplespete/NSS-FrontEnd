@@ -22,7 +22,7 @@ test("Filter Medium Strings (>2 but <5 chars)", function(){
   deepEqual(filter_medium_strings(string_list),expected,"Filtered Medium Strings Successfully!");
 });
 
-test("Filter A Strings", function(){
+test('Filter "A" Strings', function(){
   var string_list = ['as','ahoy','bro','Alex','you','ream','is','friend'];
   var expected = ['as','ahoy','Alex'];
   deepEqual(filter_a_strings(string_list),expected,"Filtered A Strings Successfully!");
@@ -32,5 +32,8 @@ test("Filter A Strings", function(){
 test("Find A String", function(){
   var string_list = ['as','ahoy','bro','Alex','you','ream','is','friend'];
   var expected = 'Alex';
-  deepEqual(find_a_string(string_list,'Alex'),expected,"Found the string successfully!");
+  deepEqual(find_a_string(string_list,'Alex'),expected,"Found the Alex string successfully!");
+  deepEqual(find_a_string(string_list,'ahoy'),"ahoy","Found the ahoy string successfully!");
+  deepEqual(find_a_string(string_list,'friend'),"friend","Found the friend string successfully!");
+  deepEqual(find_a_string(string_list,'happymeal'),undefined,"Should not find the string");
 });
