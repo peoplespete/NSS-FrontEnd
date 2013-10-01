@@ -1,0 +1,32 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %title Template
+    %link{rel: 'stylesheet', href: 'css/normalize.css'}
+    %link{rel: 'stylesheet', href: 'css/style.css'}
+  %body
+    #a A
+    #b B
+    #c C
+    %p#d.e D
+    %p#e.e E
+    %p#f.e F
+
+    //make a simple calculator
+    %input#num1{type:'text'}
+    %span#operator ?
+    %input#num2{type:'text'}
+    %span#equals =
+    %span#ans
+    %input#add{type:'button', value:'Add'}
+    %input#subtract{type:'button', value:'Subtract'}
+    %input#multiply{type:'button', value:'Multiply'}
+    %input#divide{type:'button', value:'Divide'}
+
+
+    %script{src: 'js/jquery-1.10.2.min.js'}
+    %script{src: 'js/underscore-min.js'}
+    %script{src: 'js/main.js'}
+
+
