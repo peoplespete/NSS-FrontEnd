@@ -6,12 +6,9 @@
     %link{rel: 'stylesheet', href: 'css/normalize.css'}
     %link{rel: 'stylesheet', href: 'css/style.css'}
   %body
-    %input#word
-    %span =>
-    %input#ordwa{type:'text',readonly:true}
-    %input#pig{type:'button',value:'Pig!'}
-
-
+    %input#in{type:'text',placeholder:'Seperate with Comma'}
+    %input#calculate{type:'button',value:'Calculate!'}
+    #out Once you place two numbers in the box above and click Calculate!, your answer will appear here.
     %script{src: 'js/jquery-1.10.2.min.js'}
     %script{src: 'js/underscore-min.js'}
     %script{src: 'js/main.js'}

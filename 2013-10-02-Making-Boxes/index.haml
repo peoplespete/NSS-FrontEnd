@@ -6,11 +6,11 @@
     %link{rel: 'stylesheet', href: 'css/normalize.css'}
     %link{rel: 'stylesheet', href: 'css/style.css'}
   %body
-    %input#word
-    %span =>
-    %input#ordwa{type:'text',readonly:true}
-    %input#pig{type:'button',value:'Pig!'}
-
+    %h1 Making Boxes
+    %input#amount{type:'text',placeholder:'number of boxes'}
+    %input#style{type:'text',placeholder:'style (#1-5)'}
+    %input#maker{type:'button',value:'Make Boxes!!!'}
+    #boxes
 
     %script{src: 'js/jquery-1.10.2.min.js'}
     %script{src: 'js/underscore-min.js'}

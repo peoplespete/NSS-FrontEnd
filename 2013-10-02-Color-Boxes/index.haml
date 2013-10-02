@@ -6,12 +6,11 @@
     %link{rel: 'stylesheet', href: 'css/normalize.css'}
     %link{rel: 'stylesheet', href: 'css/style.css'}
   %body
-    %input#word
-    %span =>
-    %input#ordwa{type:'text',readonly:true}
-    %input#pig{type:'button',value:'Pig!'}
-
-
+    %h1 Color Boxes
+    %input#colorstring{type:'text',placeholder:'Type Some Colors'}
+    %input#colorbutton{type:'button',value:'Color the boxes'}
+    %input#clearbutton{type:'button',value:'Clear the color names'}
+    #boxes
     %script{src: 'js/jquery-1.10.2.min.js'}
     %script{src: 'js/underscore-min.js'}
     %script{src: 'js/main.js'}

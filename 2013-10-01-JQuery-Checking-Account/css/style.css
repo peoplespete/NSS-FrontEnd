@@ -1,0 +1,16 @@
+#contents {
+  margin: 0 auto; }
+
+#balance {
+  height: 40px;
+  width: 150px;
+  background-color: lightgreen;
+  border-radius: 8px;
+  padding: 40px;
+  font-size: 40px; }
+
+.broke {
+  background-color: blue;
+  color: red;
+  border: 4px dashed red;
+  font-weight: bolder; }

@@ -1,0 +1,9 @@
+body {
+  margin: 20px; }
+
+.box {
+  float: left;
+  width: 33px;
+  height: 33px;
+  margin: 5px;
+  border: 2px solid #34aaaa; }
