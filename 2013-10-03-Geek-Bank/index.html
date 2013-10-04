@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>Template</title>
+    <link href='css/normalize.css' rel='stylesheet'>
+    <link href='css/style.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div id='logo'>
+      <img id='logopic'>
+      <input autofocus id='url' placeholder='https://www.google.com/' type='text'>
+      <input id='setlogo' type='button' value='Set Logo'>
+    </div>
+    <div id='balance'>
+      <h1>Balance</h1>
+      <div id='balancedisplay'></div>
+      <input id='balanceamount' placeholder='2500.00' type='text'>
+      <input id='setbalance' type='button' value='Set Balance'>
+    </div>
+    <div id='transaction'>
+      <h1>Transaction</h1>
+      <input id='amount' placeholder='54.23' type='text'>
+      <input id='deposit' type='button' value='Deposit'>
+      <input id='withdraw' type='button' value='Withdraw'>
+    </div>
+    <div id='statement'>
+      <div id='col1'>
+        <h3>Deposits</h3>
+        <ul id='depositlist'></ul>
+      </div>
+      <div id='col2'>
+        <h3>Withdrawls</h3>
+        <ul id='withdrawllist'></ul>
+      </div>
+    </div>
+    <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/underscore-min.js'></script>
+    <script src='js/main.js'></script>
+  </body>
+</html>

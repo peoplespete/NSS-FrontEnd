@@ -1,0 +1,25 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %title Template
+    %link{rel: 'stylesheet', href: 'css/normalize.css'}
+    %link{rel: 'stylesheet', href: 'css/style.css'}
+  %body
+    %h1 Photoshopaholics Anonymous
+    #block1
+      %input#color{type:'text',placeholder:'Color',autofocus:true}
+      %input#addcolor{type:'button',value:'Add Color'}
+      %span#paintcolor
+      %span#colors.clear
+    #block2.clear
+      %input#amount{type:'text',placeholder:'7'}
+      %input#addboxes{type:'button',value:'Add Boxes'}
+    #canvas.clear
+      .clear
+
+    %script{src: 'js/jquery-1.10.2.min.js'}
+    %script{src: 'js/underscore-min.js'}
+    %script{src: 'js/main.js'}
+
+

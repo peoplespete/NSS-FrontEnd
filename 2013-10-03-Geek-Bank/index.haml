@@ -1,0 +1,36 @@
+!!! 5
+%html{lang: 'en'}
+  %head
+    %meta{charset: 'utf-8'}
+    %title Template
+    %link{rel: 'stylesheet', href: 'css/normalize.css'}
+    %link{rel: 'stylesheet', href: 'css/style.css'}
+  %body
+    #logo
+      %img#logopic
+      %input#url{type:'text',placeholder:'https://www.google.com/',autofocus:true}
+      %input#setlogo{type:'button',value:'Set Logo'}
+    #balance
+      %h1 Balance
+      #balancedisplay
+      %input#balanceamount{type:'text',placeholder:'2500.00'}
+      %input#setbalance{type:'button',value:'Set Balance'}
+    #transaction
+      %h1 Transaction
+      %input#amount{type:'text',placeholder:'54.23'}
+      %input#deposit{type:'button',value:'Deposit'}
+      %input#withdraw{type:'button',value:'Withdraw'}
+    #statement
+      #col1
+        %h3 Deposits
+        %ul#depositlist
+      #col2
+        %h3 Withdrawls
+        %ul#withdrawllist
+
+
+    %script{src: 'js/jquery-1.10.2.min.js'}
+    %script{src: 'js/underscore-min.js'}
+    %script{src: 'js/main.js'}
+
+

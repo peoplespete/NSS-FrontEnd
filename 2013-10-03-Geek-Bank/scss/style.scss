@@ -1,0 +1,19 @@
+body{
+  margin: 10px;
+}
+
+.broke{
+  background-color: yellow;
+  color: red;
+  font-weight: bold;
+}
+
+#statement > div{
+  float:left;
+  margin: 15px;
+  padding: 5px;
+  border: 4px dashed pink;
+  border-radius: 10px;
+  background-color: #cfcf88;
+  color: #5f2299
+}
