@@ -1,0 +1,60 @@
+!!! 5
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+%head
+  %meta{charset: "utf-8"}
+  %meta{name: "viewport", content: "width=device-width"}
+  %title Foundation 4
+  %link{rel: "stylesheet", href: "css/normalize.css"}
+  %link{rel: "stylesheet", href: "css/foundation.css"}
+  %link{rel: "stylesheet", href: "css/app.css"}
+  %script{src: "js/vendor/custom.modernizr.js"}  //this will make older versions run more similarly to newer ones
+%body
+  .row
+    .small-12.columns
+      %h1 Inventory System
+  .row
+    .small-2.columns
+      %h5 Name
+    .small-1.columns
+      %h5 Amount
+    .small-1.columns
+      %h5 Value
+    .small-2.columns
+      %h5 Location
+    .small-2.columns
+      %h5 Condition
+    .small-2.columns
+      %h5 Purchase Date
+    .small-2.columns
+  .row
+    .small-2.columns
+      %input#name{type:'text',placeholder:'Frank',autofocus:true}
+    .small-1.columns
+      %input#amount{type:'text',placeholder:5}
+    .small-1.columns
+      %input#value{type:'text',placeholder:22.57}
+    .small-2.columns
+      %input#location{type:'text',placeholder:'kitchen'}
+    .small-2.columns
+      %input#condition{type:'text',placeholder:'fair'}
+    .small-2.columns
+      %input#purchaseDate{type:'text',placeholder:'12/24/12'}
+    .small-2.columns
+      %input#add.button.small.radius.success{type:'button',value:'Add'}
+  .row
+    .small-12.columns
+      %table#items
+        %tr.header
+          %th Name
+          %th Amount
+          %th Value
+          %th Location
+          %th Condition
+          %th Date Purchased
+
+
+  %script{src: 'js/vendor/jquery-1.10.2.js'}
+  %script{src: 'js/vendor/foundation.min.js'}
+  %script{src: 'js/vendor/underscore.js'}
+  %script{src: 'js/app/app.js'}

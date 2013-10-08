@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width' name='viewport'>
+  <title>Foundation 4</title>
+  <link href='css/normalize.css' rel='stylesheet'>
+  <link href='css/foundation.css' rel='stylesheet'>
+  <link href='css/app.css' rel='stylesheet'>
+  <script src='js/vendor/custom.modernizr.js'>//this will make older versions run more similarly to newer ones</script>
+</head>
+<body>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <h1>Inventory System</h1>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <h5>Name</h5>
+    </div>
+    <div class='small-1 columns'>
+      <h5>Amount</h5>
+    </div>
+    <div class='small-1 columns'>
+      <h5>Value</h5>
+    </div>
+    <div class='small-2 columns'>
+      <h5>Location</h5>
+    </div>
+    <div class='small-2 columns'>
+      <h5>Condition</h5>
+    </div>
+    <div class='small-2 columns'>
+      <h5>Purchase Date</h5>
+    </div>
+    <div class='small-2 columns'></div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <input autofocus id='name' placeholder='Frank' type='text'>
+    </div>
+    <div class='small-1 columns'>
+      <input id='amount' placeholder='5' type='text'>
+    </div>
+    <div class='small-1 columns'>
+      <input id='value' placeholder='22.57' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input id='location' placeholder='kitchen' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input id='condition' placeholder='fair' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input id='purchaseDate' placeholder='12/24/12' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input class='button small radius success' id='add' type='button' value='Add'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <table id='items'>
+        <tr class='header'>
+          <th>Name</th>
+          <th>Amount</th>
+          <th>Value</th>
+          <th>Location</th>
+          <th>Condition</th>
+          <th>Date Purchased</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script src='js/vendor/jquery-1.10.2.js'></script>
+  <script src='js/vendor/foundation.min.js'></script>
+  <script src='js/vendor/underscore.js'></script>
+  <script src='js/app/app.js'></script>
+</body>
