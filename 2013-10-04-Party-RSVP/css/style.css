@@ -1,2 +1,17 @@
 table {
   border: 1px solid black; }
+
+th {
+  min-width: 300px; }
+
+td {
+  text-align: center; }
+
+.name {
+  min-width: 300px; }
+
+.food {
+  min-width: 300px; }
+
+.controls {
+  min-width: 300px; }

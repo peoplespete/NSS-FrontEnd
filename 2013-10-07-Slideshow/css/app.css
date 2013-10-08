@@ -1,0 +1,36 @@
+.photo {
+  float: left;
+  width: 150px;
+  height: 150px;
+  border: 3px solid #ccc;
+  border-radius: 4px;
+  margin: 10px;
+  background-size: cover; }
+
+.chosen {
+  border: 5px solid #aaffaa; }
+
+.saved {
+  float: right;
+  margin: 5px;
+  background-color: pink;
+  border: 3px dashed blue;
+  border-radius: 5px;
+  overflow: hidden; }
+
+.stored {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  margin: 3px;
+  background-size: cover; }
+
+.stored:hover {
+  width: 400px;
+  height: 400px;
+  border: 5px solid #eee;
+  border-radius: 10px;
+  margin: 3px;
+  background-size: cover; }

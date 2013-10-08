@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <title>Template</title>
+    <link href='css/normalize.css' rel='stylesheet'>
+    <link href='css/style.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div id='input'>
+      <h1>To Do</h1>
+      <input id='dueDate' placeholder='Due Date (12/05/13)' type='text'>
+      <input id='task' placeholder='Task (Build barn)' type='text'>
+      <input id='color' placeholder='Color (#22bbff)' type='text'>
+      <input id='addTask' type='button' value='Add Task'>
+    </div>
+    <div id='tasklist'>
+      <table>
+        <tr class='header'>
+          <th>Due Date</th>
+          <th>Task</th>
+          <th>Color</th>
+          <th>Done?</th>
+          <th>Remove?</th>
+          <th>Up/Down</th>
+        </tr>
+      </table>
+    </div>
+    <script src='js/jquery-1.10.2.min.js'></script>
+    <script src='js/underscore-min.js'></script>
+    <script src='js/main.js'></script>
+  </body>
+</html>
