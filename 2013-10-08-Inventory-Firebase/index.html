@@ -18,6 +18,17 @@
   </div>
   <div class='row'>
     <div class='small-2 columns'>
+      <input id='username' placeholder='Username' type='text'>
+    </div>
+    <div class='small-8 columns'>
+      <input id='address' placeholder='418 Peabody St' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input class='button small radius' id='save' type='button' value='Save'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
       <h5>Name</h5>
     </div>
     <div class='small-1 columns'>
@@ -61,6 +72,14 @@
     </div>
   </div>
   <div class='row'>
+    <div class='small-2 columns'>
+      <h6>Total Value</h6>
+    </div>
+    <div class='small-10 columns'>
+      <div id='totalCost'></div>
+    </div>
+  </div>
+  <div class='row'>
     <div class='small-12 columns'>
       <table id='items'>
         <tr class='header'>
@@ -77,5 +96,6 @@
   <script src='js/vendor/jquery-1.10.2.js'></script>
   <script src='js/vendor/foundation.min.js'></script>
   <script src='js/vendor/underscore.js'></script>
+  <script src='https://cdn.firebase.com/v0/firebase.js'></script>
   <script src='js/app/app.js'></script>
 </body>

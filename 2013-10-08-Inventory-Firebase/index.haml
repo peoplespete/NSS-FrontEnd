@@ -15,6 +15,14 @@
       %h1 Inventory System
   .row
     .small-2.columns
+      %input#username{type:'text', placeholder:'Username'}
+    .small-8.columns
+      %input#address{type:'text', placeholder:'418 Peabody St'}
+    .small-2.columns
+      %input#save.button.small.radius{type:'button', value:'Save'}
+
+  .row
+    .small-2.columns
       %h5 Name
     .small-1.columns
       %h5 Amount
@@ -43,6 +51,11 @@
     .small-2.columns
       %input#add.button.small.radius.success{type:'button',value:'Add'}
   .row
+    .small-2.columns
+      %h6 Total Value
+    .small-10.columns
+      #totalCost
+  .row
     .small-12.columns
       %table#items
         %tr.header
@@ -54,7 +67,9 @@
           %th Date Purchased
 
 
+
   %script{src: 'js/vendor/jquery-1.10.2.js'}
   %script{src: 'js/vendor/foundation.min.js'}
   %script{src: 'js/vendor/underscore.js'}
+  %script{src: 'https://cdn.firebase.com/v0/firebase.js'}
   %script{src: 'js/app/app.js'}
