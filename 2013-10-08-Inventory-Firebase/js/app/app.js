@@ -1,7 +1,16 @@
 'use strict';
+
+//Database Schema
 var Δdb;
+var Δperson;
 var Δitems;
-var items = [];
+
+//Local Schema
+var db = {};
+db.person = {};
+db.items = [];
+db.statistics = {};
+db.statistics.total = 0;
 
 $(document).ready(function(){
   $(document).foundation();
@@ -9,67 +18,38 @@ $(document).ready(function(){
   $('#add').click(additem);
   Δdb = new Firebase('https://inventory-pete.firebaseio.com/');
   Δitems = Δdb.child('items');
-  Δdb.once('value', receivedDB);   // this function asks firebase for the values
+  Δperson = Δdb.child('person');
+  // this function asks firebase for the values
     //it will update and call its function anytime there is a change //it is called
     //once initially
-  Δitems.on('child_added',childadded);
-  Δitems.on('child_removed',childremoved);
+  Δitems.on('child_added',itemadded);
+  Δperson.on('value',personChange);
 });
 
-function totalCost(){
-  var total = 0;
-  for(var i =0; i<items.length; i++){
-    total += (items[i].value * items[i].amount);
+function personChange(snapshot){
+  db.person = snapshot.val();
+  try{
+    $('#username').val(db.person.username);
+    $('#address').val(db.person.address);
+  }catch(err){
+    console.log(err);
   }
-  $('#totalCost').text('$' + total);
+  console.log(db.person.username);
+  console.log(db.person.address);
 }
 
-function receivedDB(snapshot){
-    // console.log(snapshot.val()); // this spits out what it has sent you
-    console.log('receivedDBData was called');
-    var inventory = snapshot.val();
-    $('#username').val(inventory.username);
-    $('#address').val(inventory.address);
-    totalCost();
-
-    //   //looping through an object
-    // for(var property in inventory.items){
-    //   items.push(inventory.items[property]);//goes through each property in array
-    //   //and puts it into the items array
-    //   //basically dumps all items in db into our items array
-    // }
-
-    // // if(inventory.items){  //condition returns false because there is nothing in items yet
-    // //   console.log('Yes there are items');
-    // //   items = inventory.items;
-    // // } else{
-    // //   console.log('No there are no items');
-    // //   items = [];
-    // // }
-    // // console.log(items);
-    // // console.log(items.length);
-    // // $('#items').children().children('.row').remove();
-
-    // for(var i = 0; i<items.length; i++){
-    //   if(items[i]){
-    //     buildRow(items[i]);
-    //   }
-    // }
+function totalCost(item){
+  console.log(db.items.length);
+  db.statistics.total += (item.value * item.amount);
+  $('#totalCost').text('$' + db.statistics.total);
 }
 
-function childadded(snapshot){
+function itemadded(snapshot){
   var newitem = snapshot.val();
-  items.push(newitem);
+  db.items.push(newitem);
   buildRow(newitem);
+  totalCost(newitem);
 
-}
-
-function childremoved(snapshot){//not working
-  //can't figure out how to know which item in items array needs to be
-  //removed other than comparing its contents one by one
-  var rmitem = snapshot.val();
-  console.log(rmitem);
-  console.log(items);
 }
 
 function buildRow(item){
@@ -89,11 +69,10 @@ function buildRow(item){
 function save(){
   var username = $('#username').val();
   var address = $('#address').val();
-  var inventory = {};
-  inventory.username = username;
-  inventory.address = address;
+  db.person.username = username;
+  db.person.address = address;
   // console.log(inventory);
-  Δdb.update(inventory); // writes inventory object to db in cloud
+  Δperson.set(db.person); // writes person object to db in cloud
 
 }
 
@@ -130,4 +109,37 @@ function clearInput(){
   $('#condition').val('');
   $('#purchaseDate').val('');
 }
+
+
+// function receivedDB(snapshot){
+//     // console.log(snapshot.val()); // this spits out what it has sent you
+//     console.log('receivedDBData was called');
+//     var person = snapshot.val();
+//     $('#username').val(person.username);
+//     $('#address').val(person.address);
+
+//     //   //looping through an object
+//     // for(var property in inventory.items){
+//     //   items.push(inventory.items[property]);//goes through each property in array
+//     //   //and puts it into the items array
+//     //   //basically dumps all items in db into our items array
+//     // }
+
+//     // // if(inventory.items){  //condition returns false because there is nothing in items yet
+//     // //   console.log('Yes there are items');
+//     // //   items = inventory.items;
+//     // // } else{
+//     // //   console.log('No there are no items');
+//     // //   items = [];
+//     // // }
+//     // // console.log(items);
+//     // // console.log(items.length);
+//     // // $('#items').children().children('.row').remove();
+
+//     // for(var i = 0; i<items.length; i++){
+//     //   if(items[i]){
+//     //     buildRow(items[i]);
+//     //   }
+//     // }
+// }
 
