@@ -1,0 +1,21 @@
+html, body {
+  height: 100%; }
+
+body {
+  background-color: pink; }
+
+#map-canvas {
+  height: 100%;
+  width: 100%;
+  border: 2px solid #aa3388; }
+
+#left, #right {
+  float: left; }
+
+#left {
+  width: 90%;
+  height: 100%; }
+
+#right {
+  width: 10%;
+  padding-top: 2%; }
