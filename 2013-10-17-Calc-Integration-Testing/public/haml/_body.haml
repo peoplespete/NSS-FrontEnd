@@ -1,0 +1,19 @@
+/#map-canvas
+.row
+  .small-12.columns
+    %h3 Calculator
+.row
+  .small-2.columns
+    %input#op1{type:'text',placeholder:'5',autofocus:true}
+  .small-1.columns
+    %input#operator{type:'text',placeholder:'*'}
+  .small-2.columns
+    %input#op2{type:'text',placeholder:'9'}
+  .small-2.columns
+    %input#calculate.button.large{type:'button',value:'CALCULATE'}
+  .small-5.columns
+.row
+  .small-6.columns
+    #result
+  .small-6.columns
+    %ul#history
