@@ -2,108 +2,65 @@
 
 // Firebase Schema
 var Δdb;
-var Δpositions;
 
 // Local Schema (defined in keys.js)
 db.positions = [];
-db.path = [];
+db.favorites = [];
 
 $(document).ready(initialize);
 
 function initialize(){
   $(document).foundation();
   Δdb = new Firebase(db.keys.firebase);
-  Δpositions = Δdb.child('positions');
-  Δpositions.on('child_added',dbPositionAdded);
+  Δdb.positions = Δdb.child('positions');
+  Δdb.favorites = Δdb.child('favorites');
   initMap(36, -86, 5);
   $('#start').click(clickStart);
   $('#stop').click(clickStop);
-  $('#erase').click(clickErase);
-  Δpositions.remove();
+  $('#addPlace').click(clickAddPlace);
+
+
 }
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
+//CLICK FUNCTIONS
 function clickStart(){
-  var geoOptions = {enableHighAccuracy: true,maximumAge: 1000,timeout: 27000};
-  db.watchId = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+  console.log('nice');
 }
 
 function clickStop(){
-  navigator.geolocation.clearWatch(db.watchID);
+  console.log('to');
 }
 
-function clickErase(){
-  Δpositions.remove();
-  db.positions = [];
-  db.path = [];
+function clickAddPlace(){
+  var placename = getValue('#place');
+  console.log(placename + ' you');
 }
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
+//DB FUNCTIONS
 
-function dbPositionAdded(snapshot){
-  var position = snapshot.val();
-  $('#debug').text(position.time);
-  var latLng = new google.maps.LatLng(position.latitude, position.longitude);
-  db.positions.push(position);
-  console.log(position);
-  if(db.positions.length === 1){
-    //add marker
-    htmlAddStartIcon(latLng);
-    //draw line from position to db.positions[db.positions.length - 1]
-    htmlDrawLine();
-  }
-  db.path.push(latLng);
-  db.marker.setPosition(latLng);
-  htmlCenterZoom(latLng);
-}
 
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
-function htmlDrawLine(){
-  var path = new google.maps.Polyline({
-    map: db.map,
-    geodesic: true,
-    strokeColor: '#FFBB00',
-    strokeOpacity: 1,
-    strokeWeight: 3
-  });
-  db.path = path.getPath();
-}
+//HTML FUNCTIONS
 
-function htmlAddStartIcon(latLng){
-  db.marker = new google.maps.Marker({map:db.map,position:latLng,title:'Start',icon:'../../img/Start.png'});
-}
 
-function htmlCenterZoom(latLng){
-  db.map.setCenter(latLng);
-  db.map.setZoom(15);
-}
+
+
+
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
-
 function initMap(lat, lng, zoom){
-  var mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: zoom, mapTypeId: google.maps.MapTypeId.TERRAIN};
+  var mapOptions = {center: new google.maps.LatLng(lat, lng), zoom: zoom, mapTypeId: google.maps.MapTypeId.ROADMAP};
   db.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-}
-
-function geoSuccess(location) {
-  var position = {};
-  position.latitude = location.coords.latitude;
-  position.longitude = location.coords.longitude;
-  position.altitude = location.coords.altitude || 0; //if it doesn't give you altitude make it 0
-  position.time = moment().format('MMMM Do YYYY, h:mm:ss a');
-  Δpositions.push(position);
-}
-
-function geoError() {
-  console.log('Sorry, no position available.');
 }
 
 // -------------------------------------------------------------------- //
@@ -112,7 +69,7 @@ function geoError() {
 
 function getValue(selector, fn){
   var value = $(selector).val();
-  value = value.trim();  // this removes whitespace accidentally inputed by user
+  value = value.trim();
   $(selector).val('');
 
   if(fn){
