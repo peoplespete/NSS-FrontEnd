@@ -2,7 +2,8 @@
 
 // Firebase Schema
 var Δdb;
-
+var Δpositions;
+var Δfavorites;
 // Local Schema (defined in keys.js)
 db.positions = [];
 db.favorites = [];
@@ -12,13 +13,13 @@ $(document).ready(initialize);
 function initialize(){
   $(document).foundation();
   Δdb = new Firebase(db.keys.firebase);
-  Δdb.positions = Δdb.child('positions');
-  Δdb.favorites = Δdb.child('favorites');
+  Δpositions = Δdb.child('positions');
+  Δfavorites = Δdb.child('favorites');
   initMap(36, -86, 5);
   $('#start').click(clickStart);
   $('#stop').click(clickStop);
   $('#addPlace').click(clickAddPlace);
-
+  Δpositions.on('child_added',dbPositionAdded);
 
 }
 
@@ -27,7 +28,9 @@ function initialize(){
 // -------------------------------------------------------------------- //
 //CLICK FUNCTIONS
 function clickStart(){
-  console.log('nice');
+  var geoOptions = {enableHighAccuracy: true,maximumAge: 1000,timeout: 27000};
+  db.watchId = navigator.geolocation.watchPosition(geoSuccess, geoError, geoOptions);
+
 }
 
 function clickStop(){
@@ -43,16 +46,30 @@ function clickAddPlace(){
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 //DB FUNCTIONS
+function dbPositionAdded(snapshot){
+  db.positions.push(snapshot.val());
+  if(db.positions.length === 1){
+    htmlAddStartIcon();
+    htmlDrawLine();
+  }
 
+
+}
 
 
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 // -------------------------------------------------------------------- //
 //HTML FUNCTIONS
+function htmlAddStartIcon(){
+  console.log('in htmlAddStartIcon');
+  db.startMarker = new google.maps.Marker({map:db.map,position:db.positions[0].latLng,title:'Start',icon:'../../img/Start.png'});
+//  db.startMarker.setPosition(db.positions[0].latLng);
+}
 
+function htmlDrawLine(){
 
-
+}
 
 
 // -------------------------------------------------------------------- //
@@ -63,9 +80,18 @@ function initMap(lat, lng, zoom){
   db.map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 }
 
-// -------------------------------------------------------------------- //
-// -------------------------------------------------------------------- //
-// -------------------------------------------------------------------- //
+function geoSuccess(location){
+  var position = {};
+  console.log(location);
+  position.latLng = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+  position.altitude = location.coords.altitude;
+  position.time = moment().format();
+  Δpositions.push(position);
+}
+
+function geoError(){
+  console.log('error!!!');
+}
 
 function getValue(selector, fn){
   var value = $(selector).val();
