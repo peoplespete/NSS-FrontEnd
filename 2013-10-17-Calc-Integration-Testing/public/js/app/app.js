@@ -6,14 +6,40 @@
 // // Local Schema (defined in keys.js)
 
 $(document).ready(initialize);
-
 function initialize(fn, flag){
   if(!canRun(flag)){return;}
   $(document).foundation();
   // Δdb = new Firebase(db.keys.firebase);
   // initMap(36, -86, 5);
   $('#calculate').click(clickCalculate);
+  $('#sum').click(clickSum);
+  $('#product').click(clickProduct);
+
   $('#history').on('click','.remove',clickRemoveRow);
+}
+function clickProduct(){
+  var product = 1;
+  for(var i = 1; i<= $('#history li').length; i++){
+    console.log($('#history li:nth-child(' + i + ') .result').text());
+    product *= parseFloat($('#history li:nth-child(' + i+ ') .result').text());
+  }
+  console.log(product);
+
+  $('#productDisplay').text(product);
+
+
+}
+
+function clickSum(){
+  var sum = 0;
+  for(var i = 1; i<= $('#history li').length; i++){
+    console.log($('#history li:nth-child(' + i + ') .result').text());
+    sum += parseFloat($('#history li:nth-child(' + i+ ') .result').text());
+  }
+  console.log(sum);
+
+  $('#sumDisplay').text(sum);
+
 }
 
 function clickCalculate(){
@@ -29,6 +55,8 @@ function clickCalculate(){
 function clickRemoveRow(){
   $(this).closest('li').remove();
   colorRows();
+  clickSum();
+  clickProduct();
 }
 // // -------------------------------------------------------------------- //
 // // -------------------------------------------------------------------- //
@@ -49,7 +77,6 @@ function colorRows(){
   //for(var i = 0; i<$('#history li').length; i++){
   $('#history li:nth-child(even)').css({'background-color':'rgb(50,200,150)'});
   $('#history li:nth-child(odd)').css({'background-color':'rgb(200,50,150)'});
-  console.log($('#history > li:nth-child(odd)').css('background-color'));
 }
 // // -------------------------------------------------------------------- //
 // // -------------------------------------------------------------------- //

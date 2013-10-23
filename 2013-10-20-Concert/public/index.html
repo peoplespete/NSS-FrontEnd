@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset='utf-8'>
+  <meta content='width=device-width' name='viewport'>
+  <title>Concert Tickets</title>
+  <link href='/css/normalize.css' rel='stylesheet'>
+  <link href='/css/foundation.css' rel='stylesheet'>
+  <link href='/css/app.css' rel='stylesheet'>
+  <script src='/js/vendor/custom.modernizr.js'></script>
+</head>
+<body>
+  <div id='left'>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <h1 id='title'>Concert Tickets</h1>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-6 columns'>
+        <select id='section'>
+          <option value='default'>Select Section</option>
+          <option value='vip'>VIP Section</option>
+          <option value='ga'>General Admission</option>
+        </select>
+      </div>
+      <div class='small-3 columns'>
+        <input id='seatNum' placeholder='35' type='text'>
+      </div>
+      <div class='small-3 columns'>
+        <input id='seatCost' placeholder='$100' type='text'>
+      </div>
+      <div class='small-12 columns'>
+        <input class='button success radius expand' id='createSeats' type='button' value='Create Seats'>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <h3>Reporting</h3>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-6 columns'>
+        <div class='row'>
+          <div class='small-12 columns'>
+            Total VIP:
+            <span id='totV'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            Total GA:
+            <span id='totG'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            Grand Total:
+            <span id='tot'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            VIP People:
+            <span id='veeps'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            GA People:
+            <span id='geeps'></span>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-12 columns'>
+            Total People:
+            <span id='teeps'></span>
+          </div>
+        </div>
+      </div>
+      <div class='small-6 columns'>
+        <div class='row'>
+          <div class='small-4 columns'>
+            VIP:
+          </div>
+          <div class='small-8 columns'>
+            <ul id='vipList'></ul>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='small-4 columns'>
+            GA:
+          </div>
+          <div class='small-8 columns'>
+            <ul id='gaList'></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id='right'>
+    <div class='row'>
+      <div class='small-2 columns'>
+        <h2 id='subtitle'>Reserve:</h2>
+      </div>
+      <div class='small-3 columns'>
+        <input id='name' placeholder='Scott Stapp' type='text'>
+      </div>
+      <div class='small-7 columns'></div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='stage'>
+          <h2 id='halfStage'>Stage</h2>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='vip'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='small-12 columns'>
+        <div id='general'></div>
+      </div>
+    </div>
+  </div>
+  <script src='/js/vendor/jquery-1.10.2.js'></script>
+  <script src='/js/vendor/foundation.min.js'></script>
+  <script src='/js/vendor/underscore.js'></script>
+  <script src='/js/vendor/moment.min.js'></script>
+  <script src='/js/app/app.js'></script>
+</body>

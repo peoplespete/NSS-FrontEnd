@@ -1,0 +1,7 @@
+#previous, #next {
+  height: 50px;
+  width: 50px;
+  margin: 30px; }
+
+.hidden {
+  visibility: hidden; }

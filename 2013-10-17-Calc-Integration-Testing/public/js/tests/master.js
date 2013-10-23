@@ -120,3 +120,51 @@ test('Color Every Other History', function(){
   ok($('#history > li:nth-child(odd)').css('background-color')==='rgb(200, 50, 150)', 'checks that color of odds are rgb(200,50,150)');
 
 });
+
+test('Sum', function(){
+  expect(2);
+
+  $('#op1').val('3');
+  $('#op2').val('2');
+  $('#operator').val('+');
+  $('#calculate').trigger('click');
+
+  $('#op1').val('7');
+  $('#op2').val('8');
+  $('#operator').val('*');
+  $('#calculate').trigger('click');
+
+  $('#sum').trigger('click');
+
+
+  deepEqual($('#sumDisplay').text(),'61', 'makes sure that sum is made correctly');
+
+  $('#history > li:nth-child(1) > .remove').trigger('click');
+
+  deepEqual($('#sumDisplay').text(),'5', 'makes sure that sum is made correctly after one is deleted');
+
+});
+
+test('Product', function(){
+  expect(2);
+
+  $('#op1').val('3');
+  $('#op2').val('2');
+  $('#operator').val('+');
+  $('#calculate').trigger('click');
+
+  $('#op1').val('7');
+  $('#op2').val('8');
+  $('#operator').val('*');
+  $('#calculate').trigger('click');
+  $('#product').trigger('click');
+
+
+  deepEqual($('#productDisplay').text(),'280', 'makes sure that product is made correctly');
+
+  $('#history > li:nth-child(1) > .remove').trigger('click');
+
+  deepEqual($('#productDisplay').text(),'5', 'makes sure that product is made correctly after one is deleted');
+
+});
+

@@ -1,0 +1,62 @@
+body, html {
+  height: 100%;
+}
+
+#left, #right {
+  float: left;
+  height: 100%;
+}
+
+#left {
+  width: 30%;
+  border-right: 2px solid black;
+}
+
+#right {
+  width: 70%;
+
+  .row:first-child {
+    border-bottom: 1px solid black;
+  }
+
+  .row:nth-child(2) {
+    width: 80%;
+    border: 1px solid black;
+    -webkit-border-radius: 0 0 100px 100px;
+  }
+
+  .row:nth-child(3) {
+    margin-top: 50px;
+    width: 60%;
+  }
+
+  .row:nth-child(4) {
+    margin-top: 50px;
+    width: 80%;
+  }
+}
+
+#section {
+  padding: 5px;
+}
+
+#name {
+  height: 100%;
+  margin-top: 19px;
+}
+
+#halfStage {
+  margin-left: 45%;
+}
+
+#vip > div, #general > div {
+  float:left;
+  border: 2px dashed black;
+  height: 50px;
+  width: 50px;
+}
+
+.reserved{
+  background-color: #252525;
+  color: yellow;
+}
