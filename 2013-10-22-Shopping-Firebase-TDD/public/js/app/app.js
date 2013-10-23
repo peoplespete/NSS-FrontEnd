@@ -74,7 +74,7 @@ function clickNext(){
   htmlClearRows();
   db.pagination.currentPage++;
   htmlPutRows(db.pagination.currentPage);
-  if($('table#products tr:not(.header)').length < 5){
+  if($('table#products tr:not(.header)').length < db.pagination.perPage){
     htmlHideNext();
   }
   htmlShowPrevious();
@@ -99,7 +99,7 @@ function dbProductAdded(snapshot){
   product.id = snapshot.name();
   db.products.push(product);
   console.log(db.products.length);
-  if(db.products.length < 6){
+  if(db.products.length <= db.pagination.perPage){
     htmlPutProduct(product);
   }
   else{
@@ -126,7 +126,7 @@ function htmlClearRows(){
 
 function htmlPutRows(page){
   page -=1;
-  for(var i  = page * 5; i < ((page * 5) + 5 ); i++){
+  for(var i  = page * db.pagination.perPage; i < ((page * db.pagination.perPage) + db.pagination.perPage ); i++){
     if(db.products[i]){
       htmlPutProduct(db.products[i]);
     }
