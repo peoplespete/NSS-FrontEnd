@@ -1,0 +1,22 @@
+extends ../template/layout
+
+block content
+  h1 People List
+  p: a(href='/') View Homepage
+  p: a(href='/people/new') Add a Friend
+  //- -var people = []
+  -var person = people[0]
+  if person
+    table#people
+      thead: tr
+        each value, property in person
+          th= property
+      tbody
+        each person, index in people
+         tr(id=person.name)
+          each value, property in person
+            if property == 'color'
+              td(style='background-color:#{value};' class= property)
+            else
+              td(class=property)= value
+

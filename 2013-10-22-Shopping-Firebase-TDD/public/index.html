@@ -35,19 +35,106 @@
   <div class='row'>
     <div class='small-12 columns'>
       <table id='products'>
-        <tr class='header'>
-          <th>Name</th>
-          <th>Image</th>
-          <th>Weight</th>
-          <th>Price</th>
-          <th>Percent Off</th>
-          <th>Sale Price</th>
-        </tr>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Weight</th>
+            <th>Price</th>
+            <th>Percent Off</th>
+            <th>Sale Price</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
       </table>
       <div id='buttons'>
         <img id='previous' src='img/previous.jpg'>
-        <img id='next' src='img/next.jpeg'>
+        <img id='next' src='img/next.jpg'>
       </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-2 columns'>
+      <input id='customerName' placeholder='Bob' type='text'>
+    </div>
+    <div class='small-2 columns'>
+      <input id='customerImage' placeholder='how to find image' type='text'>
+    </div>
+    <div class='small-4 columns'>
+      <form id='domesticInternational'>
+        <input id='isDomestic' name='shipping' type='radio' value='domestic'>Domestic</input>
+        <input id='isInternational' name='shipping' type='radio' value='international'>International</input>
+      </form>
+    </div>
+    <div class='small-4 columns'>
+      <input class='button small success radius' id='addCustomer' type='button' value='Add Customer'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-4 columns'>
+      <select id='selectCustomer'>
+        <option value='default'>Select a Customer</option>
+      </select>
+    </div>
+    <div class='small-8 columns'></div>
+  </div>
+  <div class='row'>
+    <div class='small-10 columns'>
+      <table id='order'>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Weight</th>
+            <th>Shipping Cost</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class='small-2 columns'>
+      <input class='button small radius' id='purchase' type='button' value='Purchase'>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='small-12 columns'>
+      <table id='purchases'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Time</th>
+            <th>Customer</th>
+            <th>Products</th>
+            <th>Total</th>
+            <th>Shipping</th>
+            <th>Grand</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id='revenue'></td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </div>
   <script src='/js/vendor/jquery-1.10.2.js'></script>

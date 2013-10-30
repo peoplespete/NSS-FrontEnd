@@ -1,0 +1,22 @@
+extends ../template/layout
+
+block content
+  h1 ToDo List App
+  h3 Task View
+  p: a(href='/') Return to Homepage
+  p: a(href='/tasks/new') Add a New Task
+  -var task = tasks[0]
+  if task
+    table#tasks
+      thead
+        each value, property in task
+          th= property
+      tbody
+        each task, index in tasks
+          tr(class=task.task)
+            each value, property in task
+              if property == 'color'
+                td(class=property, style='background-color:#{value}')
+              else
+                td(class=task.property)= value
+

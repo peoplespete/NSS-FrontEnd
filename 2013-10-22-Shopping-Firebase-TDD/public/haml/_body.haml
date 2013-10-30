@@ -14,15 +14,75 @@
 .row
   .small-12.columns
     %table#products
-      %tr.header
-        %th Name
-        %th Image
-        %th Weight
-        %th Price
-        %th Percent Off
-        %th Sale Price
+      %thead
+        %tr
+          %th Name
+          %th Image
+          %th Weight
+          %th Price
+          %th Percent Off
+          %th Sale Price
+      %tbody
     #buttons
       %img#previous{src:'img/previous.jpg'}
-      %img#next{src:'img/next.jpeg'}
-
-
+      %img#next{src:'img/next.jpg'}
+.row
+  .small-2.columns
+    %input#customerName{type:'text', placeholder:'Bob'}
+  .small-2.columns
+    %input#customerImage{type:'text', placeholder:'how to find image'}
+  .small-4.columns
+    %form#domesticInternational
+      %input#isDomestic{type:'radio', name:'shipping',value:'domestic'} Domestic
+      %input#isInternational{type:'radio', name:'shipping',value:'international'} International
+  .small-4.columns
+    %input#addCustomer.button.small.success.radius{type:'button', value:'Add Customer'}
+.row
+  .small-4.columns
+    %select#selectCustomer
+      %option{value:'default'} Select a Customer
+  .small-8.columns
+.row
+  .small-10.columns
+    %table#order
+      %thead
+        %tr
+          %th Name
+          %th Quantity
+          %th Amount
+          %th Weight
+          %th Shipping Cost
+          %th Total
+      %tbody
+      %tfoot
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+  .small-2.columns
+    %input#purchase.button.small.radius{type:'button', value:'Purchase'}
+.row
+  .small-12.columns
+    %table#purchases
+      %thead
+        %tr
+          %th ID
+          %th Time
+          %th Customer
+          %th Products
+          %th Total
+          %th Shipping
+          %th Grand
+      %tbody
+      %tfoot
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td#revenue

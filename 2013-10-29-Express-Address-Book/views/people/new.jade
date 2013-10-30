@@ -1,0 +1,12 @@
+extends ../template/layout
+include ../mixins/form-helper
+
+block content
+  p: a(href='/') View Homepage
+  p: a(href='/people') View Friend List
+  form(action='/people',method='post')
+    mixin field('name','Name','Ron')
+    mixin field('gender','Gender','m')
+    mixin field('age','Age','76')
+    mixin field('color','Color','#3434bb')
+    button(type='submit') Save!

@@ -1,0 +1,13 @@
+extends ../template/layout
+include ../mixins/form-helper
+
+block content
+  h1 ToDo List
+  h3 Task Wizard
+  p: a(href='/') Return to Homepage
+  p: a(href='/tasks') View Tasks
+  form(action='/tasks', method='post')
+    mixin field('task','buy groceries')
+    mixin field('dueDate','09/05/2014')
+    mixin field('color','red')
+    button(type='submit') Save

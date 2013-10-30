@@ -1,0 +1,13 @@
+extends ../template/layout
+
+block content
+  h1 Colors
+  a(href='/colors/new') Make a New Color
+  //- - var x = 3
+  //- - var y = 2
+  //- h2= (x*y)
+  //- - var word = 'funny'
+  //- h3 very #{word}
+  ol
+    - each color in colors
+      li(style='color:#{color};font-size:40px;')= color
