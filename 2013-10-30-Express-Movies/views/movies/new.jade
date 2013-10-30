@@ -1,0 +1,23 @@
+extends ../template/layout
+include ../mixins/form-helper
+
+block content
+  .row
+    .small-12.columns
+      h1 New Movie Page
+      a.button.success.radius.tiny(href='/') HomePage
+      a.button.success.radius.tiny(href='/movies') View Top Movies
+  .row
+    .small-6.columns
+      form(action='/movies' method='post')
+        mixin field('title', 'Title', 'Jaws', true)
+        mixin field('image', 'Image', 'www.google.com/purple.jpg', false)
+        mixin field('color', 'Color', 'green', false)
+        mixin field('rated', 'Rating', 'PG-13', false)
+        mixin field('studio', 'Studio', 'Pixar', false)
+        mixin field('gross', 'Gross', '14343', false)
+        mixin field('numTheaters', 'Number of Theaters', '256', false)
+        button(type='submit') Save
+    .small-6.columns
+
+
