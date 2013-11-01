@@ -1,0 +1,74 @@
+@base: #ccee66;
+@import url(http://fonts.googleapis.com/css?family=Cherry+Swash:700);
+
+body{
+  background-color: @base;
+  font-family: 'Cherry Swash', cursive;
+  width: 100%;
+}
+
+#masterHeader{
+  padding:10px;
+  width: 100%;
+  background: pink;
+  -webkit-box-shadow: 0 0 20px lightpurple;
+    -moz-box-shadow: 0 0 20px lightpurple;
+    box-shadow: 0 0 20px lightpurple;
+  margin-top: -10px;
+  position:fixed;
+  top:0;
+  // left:0;
+  z-index: 2;
+  h1{
+    float:left;
+  }
+}
+
+#content{
+  margin-top: 100px;
+  z-index: 1;
+}
+
+h1, h3.subheader{
+  font-family: 'Cherry Swash', cursive;
+}
+
+.button{
+  float:right;
+  width:150px;
+  margin:30px 10px;
+  z-index: 3;
+  color: darkblue;
+  -webkit-box-shadow: 0 0 15px purple;
+  -moz-box-shadow: 0 0 15px purple;
+  box-shadow: 0 0 15px purple;
+  &:hover{
+    color: blue;
+  }
+}
+
+#hpButton{
+  background-color: lightblue;
+  &:hover{
+    background-color: navy;
+  }
+}
+
+
+#slButton{
+  background-color: yellow;
+  &:hover{
+    background-color: gold;
+  }
+}
+
+#asButton{
+  background-color: lightgreen;
+  &:hover{
+    background-color: green;
+  }
+}
+
+textarea{
+  height: 150px;
+}

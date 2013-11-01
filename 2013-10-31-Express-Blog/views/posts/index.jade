@@ -1,0 +1,38 @@
+extends ../template/layout
+
+block content
+  .row
+    .small-12.columns
+      h1.subheader Post
+  .row
+    .small-3.columns
+      a.button.expand.tiny.radius(href='/') Home
+    .small-3.columns
+      a.button.expand.tiny.radius(href='/posts') Posts
+    .small-3.columns
+      a.button.expand.tiny.radius.success(href='/posts/new') New Post
+    .small-3.columns
+  .row
+    .small-12.columns
+      each post in posts
+        table#posts
+          thead: tr
+            th Title
+            th Author
+            th Date
+            th Tags
+            th Content
+            th
+          tbody
+            tr
+              td: a.button.tiny.radius.expand(href='/posts/#{post.id}')= post.title
+              td= post.author
+              td= post.date
+              td= post.tags
+              td
+                span #{post.content.split(' ').slice(0,15).join(' ')}...
+                a(href='/posts/#{post.id}') Read More
+              td
+                form(action='/posts/#{post.id}', method='post')
+                  input(type='hidden', value='delete', name='_method')
+                  button.tiny.expand.radius.alert(type='submit') Delete
