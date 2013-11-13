@@ -1,5 +1,13 @@
 #masterHeader
   h1 Mix-Master 2K13
-  a#hpButton.button.small.radius(href='/') Home Page
-  a#slButton.button.small.radius(href='/songs') See the Songs
-  a#asButton.button.small.radius(href='/songs/new') Add a Song
+  a#hpButton.navButton.button.small.radius(href='/') Home Page
+  #songButtons
+    a.navButton.button.small.radius(href='/songs') See the Songs
+    a.navButton.button.small.radius(href='/songs/new') Add a Song
+  #artistButtons
+    a.navButton.button.small.radius(href='/artists') Artists
+    a.navButton.button.small.radius(href='/artists/new') Add an Artist
+  #genreButtons
+    a.navButton.button.small.radius(href='/genres') See the Genres
+    a.navButton.button.small.radius(href='/genres/new') Add a Genre
+

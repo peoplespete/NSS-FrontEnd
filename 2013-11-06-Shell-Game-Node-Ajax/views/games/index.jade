@@ -1,0 +1,19 @@
+extends ../template/layout
+include ../mixins/form-helper
+
+block content
+  .row
+    .small-12.columns
+      h2 Shell Game
+  .row
+    .small-offset-8.small-4.columns
+      include form
+  .row
+    .small-12.columns
+      #game-display
+        h4#welcomeMessage
+        #cups
+          img#cup0(src='images/cup.jpg')
+          img#cup1(src='images/cup.jpg')
+          img#cup2(src='images/cup.jpg')
+        h2 Pick One!

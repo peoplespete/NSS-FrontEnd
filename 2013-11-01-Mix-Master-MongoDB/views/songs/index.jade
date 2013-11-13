@@ -12,10 +12,11 @@ block content
             .song
               h3= song.title
               audio(src='/audios/#{song.filename}', controls=true)
-              img(src=song.art)
+              a(href='/songs/#{song.id}')
+                img(src=song.art)
               p= song.duration
               p= song.lyrics
+              p= song.createdAt
               ul
                 each genre in song.genres
-                  li= genre
-              p= song.createdAt
+                  li= genre.name

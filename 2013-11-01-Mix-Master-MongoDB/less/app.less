@@ -11,9 +11,9 @@ body{
   padding:10px;
   width: 100%;
   background: pink;
-  -webkit-box-shadow: 0 0 20px lightpurple;
-    -moz-box-shadow: 0 0 20px lightpurple;
-    box-shadow: 0 0 20px lightpurple;
+  -webkit-box-shadow: 0 0 20px black;
+  -moz-box-shadow: 0 0 20px black;
+  box-shadow: 0 0 20px black;
   margin-top: -10px;
   position:fixed;
   top:0;
@@ -25,29 +25,35 @@ body{
 }
 
 #content{
-  margin-top: 100px;
+  margin-top: 150px;
   z-index: 1;
 }
 
 h1, h3.subheader{
   font-family: 'Cherry Swash', cursive;
 }
-
-.button{
-  float:right;
-  width:150px;
-  margin:30px 10px;
+.navButton{
+  float:left;
   z-index: 3;
+  width:130px;
   color: darkblue;
-  -webkit-box-shadow: 0 0 15px purple;
-  -moz-box-shadow: 0 0 15px purple;
-  box-shadow: 0 0 15px purple;
+  margin:30px 10px !important;
+  -webkit-box-shadow: 0 0 15px #c58 !important;
+  -moz-box-shadow: 0 0 15px #c58 !important;
+  box-shadow: 0 0 15px #c58 !important;
   &:hover{
     color: blue;
   }
 }
+.button{
+
+}
+
+.success{
+}
 
 #hpButton{
+  margin-left: 20px;
   background-color: lightblue;
   &:hover{
     background-color: navy;
@@ -55,17 +61,24 @@ h1, h3.subheader{
 }
 
 
-#slButton{
-  background-color: yellow;
+#songButtons a{
+  background-color: yellow !important;
   &:hover{
-    background-color: gold;
+    background-color: gold !important;
   }
 }
 
-#asButton{
-  background-color: lightgreen;
+#artistButtons a{
+  background-color: lightgreen !important;
   &:hover{
-    background-color: green;
+    background-color: green !important;
+  }
+}
+
+#genreButtons a{
+  background-color: pink !important;
+  &:hover{
+    background-color: purple !important;
   }
 }
 

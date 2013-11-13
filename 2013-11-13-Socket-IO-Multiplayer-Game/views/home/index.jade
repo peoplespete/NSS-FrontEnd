@@ -1,0 +1,25 @@
+extends ../template/layout
+
+block content
+  .row
+    .small-12.columns
+      h3 Multiplayer, Socket.io Game
+  .row
+    .small-2.columns
+      input#name(type='text', name='name', placeholder= 'Fun Game')
+    .small-2.columns
+      input#player(type='text', name='player', placeholder= 'Sara')
+    .small-2.columns
+      input#color(type='text', name='color', placeholder= '#44ffbb')
+    .small-2.columns
+      button#start.button.expand.small Start
+    .small-4.columns
+  .row
+    .small-12.columns
+      -var coords = _.range(10);
+      #grid
+        each y in coords
+          .row
+            .small-12.columns
+              each x in coords
+                .block(data-x=x, data-y=y)

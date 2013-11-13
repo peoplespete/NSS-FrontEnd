@@ -1,10 +1,16 @@
 //initializing models
+require('./models/genre');
 require('./models/song');
+require('./models/artist');
 
 
 // express application
 var home = require('./routes/home');
 var songs = require('./routes/songs');
+var artists = require('./routes/artists');
+var genres = require('./routes/genres');
+
+
 // modules
 var express = require('express');
 var http = require('http');
@@ -33,10 +39,24 @@ if ('development' == app.get('env')) {
 
 // route definitions
 app.get('/', home.index);
+
 app.get('/songs', songs.index);
 app.get('/songs/new', songs.new);
 app.post('/songs', songs.create);
+app.get('/songs/:id', songs.show);
+app.delete('/songs/:id', songs.delete);
+app.get('/songs/:id/edit', songs.edit);
+app.put('/songs/:id', songs.update);
 
+app.get('/artists', artists.index);
+app.get('/artists/new', artists.new);
+app.post('/artists', artists.create);
+
+app.get('/genres', genres.index);
+app.get('/genres/new', genres.new);
+app.post('/genres', genres.create);
+app.get('/genres/:id/edit', genres.edit);
+app.put('/genres/:id', genres.update);
 
 // start server
 http.createServer(app).listen(app.get('port'), function(){

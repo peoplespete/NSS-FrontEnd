@@ -1,0 +1,11 @@
+form#addTodo(action='/', method='get')
+  fieldset
+    legend Add a New Task
+    .row
+      mixin field(6, 'text', 'title', 'Title')
+
+      mixin field(6, 'text', 'category', 'Category')
+    .row
+      mixin field(6, 'text', 'dueDate', 'Due Date')
+      .small-6.columns
+        button.button.expand.tiny.radius.success(type='submit') Save

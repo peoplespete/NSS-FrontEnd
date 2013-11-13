@@ -1,0 +1,14 @@
+extends ../template/layout
+
+block content
+  #content
+    .row
+      .small-12.columns
+        h3.subheader Genres Page
+    .row
+      .small-12.columns
+        ul
+          each genre in genres
+            li
+              span= genre.name
+              span: a.button.tiny.radius(href='/genres/#{genre.id}/edit') Edit
