@@ -6,6 +6,7 @@ var socket;
 var name;
 var player;
 var color;
+var players;
 
 function initialize(){
   $(document).foundation();
@@ -20,38 +21,49 @@ function keypressMove(e){
   var isArrow = _.any([37,38,39,40], function(i){
     return i === e.keyCode;
   });
-  if(isArrow){
-    var x = $('.gamePiece:contains(' + player + ') ').data('x');
-    var y = $('.gamePiece:contains(' + player + ') ').data('y');
+  if(e.keyCode === 13){
+    var prey = findPrey();
+    socket.emit('playerAttack', {game: game, attacker: player, prey: prey.name});
+  }
 
+  if(isArrow){
+    var x = $('.block:contains(' + player + ') ').data('x');
+    var y = $('.block:contains(' + player + ') ').data('y');
+    ///PROBLEM HERE!!!!
+    console.log(x + ', '+y);
+    var p = findPlayer();
     switch(e.keyCode){
       case 38:
       //up
-        y--;
+        p.y--;
         break;
       case 40:
       //down
-        y++;
+        p.y++;
         break;
       case 37:
       //left
-        x--;
+        p.x--;
         break;
       case 39:
       //right
-        x++;
+        p.x++;
         break;
     }
-    socket.emit('playerMoved', {game: name, player: player, x: x, y: y});
+    socket.emit('playerMoved', {game: name, player: player, x: p.x, y: p.y});
   }
 }
 
+function findPrey(){
+//PROBLEM HERE ... NO CODE
+}
 
 function clickStart(){
   name = getValue('#name');
   player = getValue('#player');
   color = getValue('#color');
   $('#grid').show();
+  $('#currentPlayer').text(player);
   socket.emit('startgame', {name:name, player:player, color:color});
 }
 
@@ -65,12 +77,17 @@ function initializeSocketIO(){
 
 }
 
+function findPlayer(){
+  return _.find(players, function(p){return p.name === player;});
+}
+
 function socketConnected(data){
   console.log(data);
 }
 
 function socketPlayerJoined(data){
   console.log(data);
+  players = data.players;
   $('#grid .gamePiece').remove();
   for(var i = 0; i < data.players.length; i++){
     htmlCreateAndPlaceGamePiece(data.players[i]);

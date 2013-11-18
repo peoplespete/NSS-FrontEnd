@@ -6,21 +6,16 @@ require('require-dir')('./models');
 
 // route definitions
 var home = require('./routes/home');
-var assessments = require('./routes/assessments');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
-mongoose.connect('mongodb://localhost/assessment');
+mongoose.connect('mongodb://localhost/multiplayer');
 
 // configure express
 require('./config').initialize(app, RedisStore);
 
 // routes
 app.get('/', home.index);
-app.get('/upload', assessments.index);
-app.get('/input', assessments.displayTeacherDesign);
-app.post('/input', assessments.create);
-
 
 // start server & socket.io
 var common = require('./sockets/common');
