@@ -14,6 +14,20 @@ var defaultDecimalPoints = 2;
 function initialize(){
   $(document).foundation();
   initializeSocketIO();
+  //input
+  input();
+  //teacherDesign
+  teacherDesign();
+  //use
+  use();
+}
+
+
+//---INPUT INPUT INPUT----------------------------------------------------------/
+
+function input(){
+  // initialize
+  $('#designAssessment').hide().on('click',clickDesignAssessment);
   checkFileReaderFunctionality();
   $('#file').on('change', handleFileSelect);
   $('#upload').on('click', clickUpload);
@@ -45,10 +59,21 @@ function clickUpload(){
   //sendAjaxRequest(url, data, verb, altVerb, event, successFn){
   sendAjaxRequest('/input', a, 'post', null, null, function(data){
     console.log(data);
+    // $('#upload').removeClass('disabled').on('click', clickUpload);
+    $('#designAssessment').attr('href','/input/'+ data._id);
+    $('#designAssessment').show();
   });
 
 }
 
+
+function clickDesignAssessment(){
+  var id = $(this).attr('data-id');
+  //sendAjaxRequest(url, data, verb, altVerb, event, successFn){
+  sendAjaxRequest('/input', id, 'get', null, null, function(data){
+    console.log(data);
+  });
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +103,7 @@ function buildQuestionObjects(questionsText){
       var bounds = generateBounds(question.numbersActual[j]);
       question.numbersRange.push(bounds);
     }
-    question.howToSolve = 7; //REVISIT
+    question.howToSolve = []; //REVISIT
     questions.push(question);
   }
   return questions;
@@ -101,6 +126,83 @@ function generateBounds(num, percentRange, decimalPoints){
   return bounds;
 }
 
+//---teacherDesign-teacherDesign-teacherDesign----------------------------------/
+
+function teacherDesign(){
+  // initialize
+  $('#future').on('click','.operator, .number', clickOperatorOrNum);
+  $('#future #backspace').on('click', clickBackspace);
+  // $('#past').on('change keypress paste textInput input', evaluate);
+  $('#saveSolution').on('click', clickSaveSolution);
+}
+
+var genericExpression = [];
+
+function clickOperatorOrNum(){
+  var isNum = $(this).hasClass('number');
+  // console.log(isNum);
+  var expression = $('#past').text();
+  var nextChar = $(this).text();
+  $('#past').text(expression + nextChar);
+  if(isNum){
+    nextChar = '~' + $(this).attr('data-num');
+  }
+  genericExpression.push(nextChar);
+  evaluate();
+}
+
+function clickBackspace(){
+  var expression = $('#past').text();
+  expression = expression.split('');
+  expression.pop();
+  expression = expression.join('');
+  $('#past').text(expression);
+  genericExpression.pop();
+  evaluate();
+}
+
+function clickSaveSolution(){
+  //HERE WE SHOULD ADD THE HOW TO SOLVE TO EACH OF THE QUESTIONS IN MONGO
+  var question = {};
+  question.id = $(this).closest('#question').attr('data-id');
+  question.howToSolve = genericExpression;
+  console.log(question);
+  //sendAjaxRequest(url, data, verb, altVerb, event, successFn){
+  sendAjaxRequest('/input', question, 'post', 'put', null, function(data){
+    console.log(data);
+    //make that question disapeared and thing say it is saved
+  });
+
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+function evaluate(){
+  var expression = $('#past').text();
+  try{
+    expression = eval(expression);
+  }catch(e){
+    expression = '-----';
+  }
+  $('#present').text(expression);
+  // console.log(genericExpression);
+
+}
+
+
+//---use-use-use-use--------------------------------------------------------------/
+
+function use(){
+  // initialize
+
+}
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
 function generateNumberForStudent(bounds, decimalPoints){
   if(decimalPoints === undefined) {
         decimalPoints = defaultDecimalPoints;
@@ -112,12 +214,44 @@ function generateNumberForStudent(bounds, decimalPoints){
   return num;
 }
 
-function roundToDecimals(num, decimalPoints){
-  num*= Math.pow(10, decimalPoints);
-  num = Math.round(num);
-  num/= Math.pow(10, decimalPoints);
-  return num;
-}
+
+
+//--------------------------------------------------------------------------------/
+
+
+
+
+//--------------------------------------------------------------------------------/
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//--------------------------------------------------------------------------------/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

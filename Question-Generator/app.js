@@ -6,7 +6,8 @@ require('require-dir')('./models');
 
 // route definitions
 var home = require('./routes/home');
-var assessments = require('./routes/assessments');
+var build = require('./routes/build');
+var assess = require('./routes/assess');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
@@ -17,9 +18,13 @@ require('./config').initialize(app, RedisStore);
 
 // routes
 app.get('/', home.index);
-app.get('/upload', assessments.index);
-app.get('/input', assessments.displayTeacherDesign);
-app.post('/input', assessments.create);
+//input routes (ADMIN ONLY)
+app.get('/input', build.index);
+app.post('/input', build.create);
+app.get('/input/:id', build.displayTeacherDesign);
+app.put('/input', build.addHowToScore);
+//use routes (STUDENTS)
+app.get('/use', assess.index);
 
 
 // start server & socket.io
