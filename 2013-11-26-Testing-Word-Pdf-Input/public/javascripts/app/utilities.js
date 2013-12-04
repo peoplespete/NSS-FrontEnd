@@ -43,10 +43,3 @@ function sendAjaxRequest(url, data, verb, altVerb, event, successFn){
   $.ajax(options);
   if(event) {event.preventDefault();}
 }
-
-function roundToDecimals(num, decimalPoints){
-  num*= Math.pow(10, decimalPoints);
-  num = Math.round(num);
-  num/= Math.pow(10, decimalPoints);
-  return num;
-}

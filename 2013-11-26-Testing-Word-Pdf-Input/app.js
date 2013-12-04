@@ -6,26 +6,17 @@ require('require-dir')('./models');
 
 // route definitions
 var home = require('./routes/home');
-var build = require('./routes/build');
-var assess = require('./routes/assess');
 
 var app = express();
 var RedisStore = require('connect-redis')(express);
-mongoose.connect('mongodb://localhost/assessment');
+mongoose.connect('mongodb://localhost/name-of-database');
 
 // configure express
 require('./config').initialize(app, RedisStore);
 
 // routes
 app.get('/', home.index);
-//input routes (ADMIN ONLY)
-app.get('/input', build.index);
-app.post('/input', build.create);
-app.get('/input/:id', build.displayTeacherDesign);
-app.put('/input', build.addHowToScore);
-//use routes (STUDENTS)
-app.get('/use', assess.index);
-
+app.post('/upload', home.parse);
 
 // start server & socket.io
 var common = require('./sockets/common');
